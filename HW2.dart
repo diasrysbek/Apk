@@ -1,7 +1,14 @@
-void checkBalance({required String name, required double balance}) =>
+void checkBalance({
+  required String name,
+  required double balance,
+}) =>
     print('$name, your balance is $balance');
 
-double deposit({required double currentBalance, double? amount}) {
+
+double deposit({
+  required double currentBalance,
+  double? amount,
+}) {
   amount = amount ?? 0.0;
 
   double newBalance = currentBalance + amount;
@@ -11,6 +18,7 @@ double deposit({required double currentBalance, double? amount}) {
 
   return newBalance;
 }
+
 
 double withdraw({
   required String name,
@@ -42,12 +50,19 @@ double withdraw({
   return newBalance;
 }
 
+
 void main() {
   double balance = 10000;
 
-  checkBalance(name: 'Dias', balance: balance);
+  checkBalance(
+    name: 'Dias',
+    balance: balance,
+  );
 
-  balance = deposit(currentBalance: balance, amount: 5000);
+  balance = deposit(
+    currentBalance: balance,
+    amount: 5000,
+  );
 
   balance = withdraw(
     name: 'Dias',
@@ -56,5 +71,8 @@ void main() {
     pinCode: 1234,
   );
 
-  checkBalance(name: 'Dias', balance: balance);
+  checkBalance(
+    name: 'Dias',
+    balance: balance,
+  );
 }
