@@ -26,6 +26,7 @@ class ProfileCardScreen extends StatefulWidget {
 class _ProfileCardScreenState extends State<ProfileCardScreen> {
   bool _isFollowing = false;
   bool _isLiked = false;
+  bool _isDisliked = false;
 
   int _followerCount = 1320;
   int _likesCount = 120;
@@ -130,6 +131,17 @@ class _ProfileCardScreenState extends State<ProfileCardScreen> {
                       ),
                       label: const Text('Like'),
                     ),
+
+                    OutlinedButton.icon(
+                      onPressed: _toggleDislike,
+                      icon: Icon(
+                        _isDisliked
+                            ? Icons.thumb_down
+                            : Icons.thumb_down_outlined,
+                        color: _isDisliked ? Colors.blue : null,
+                      ),
+                      label: const Text('Dislike'),
+                    ),
                   ],
                 ),
 
@@ -167,6 +179,18 @@ class _ProfileCardScreenState extends State<ProfileCardScreen> {
         _likesCount++;
       } else {
         _likesCount--;
+      }
+    });
+  }
+
+  void _toggleDislike() {
+    setState(() {
+      _isDisliked = !_isDisliked;
+
+      if (_isDisliked) {
+        _likesCount--;
+      } else {
+        _likesCount++;
       }
     });
   }
